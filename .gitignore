@@ -1,0 +1,74 @@
+# ---------------------------
+# 🧠 Common OS / IDE ignores
+# ---------------------------
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# IntelliJ / Eclipse / VSCode
+.idea/
+.vscode/
+*.iml
+.project
+.classpath
+.settings/
+target/
+bin/
+out/
+
+# Maven / Gradle
+.mvn/
+!gradle/wrapper/gradle-wrapper.jar
+.gradle/
+build/
+**/build/
+**/target/
+
+# Java compiled artifacts
+*.class
+*.jar
+*.war
+*.ear
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pytest_cache/
+.env
+.venv
+env/
+venv/
+*.egg-info/
+dist/
+build/
+*.spec
+
+# Databases / SQL dumps
+*.db
+*.sqlite
+*.sql~
+*.dump
+*.bak.sql
+
+# Logs / temp files
+logs/
+*.log
+nohup.out
+
+# Docker
+*.pid
+*.tar
+docker-compose.override.yml
+
+# Coverage / reports
+htmlcov/
+.coverage
+coverage.xml
+*.lcov
+reports/
