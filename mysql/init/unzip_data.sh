@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e  # Exit immediately on any error
 
-ZIP_FILE="/california_collisions/california_collisions.zip"
+ZIP_FILE="/data/california_collisions.zip"
 DEST_DIR="/tmp/unzipped_data"
 DB_NAME="california_collisions"
 MYSQL_USER="root"
@@ -17,7 +17,10 @@ fi
 mkdir -p "$DEST_DIR"
 echo "🗂  Unzipping data to $DEST_DIR ..."
 unzip -o "$ZIP_FILE" -d "$DEST_DIR"
-cp /data/*.sql "$DEST_DIR"/california_collisions/
+cp -r /data/*.sql "$DEST_DIR"/california_collisions/
+echo "List of data sql:"
+echo "-----------------"
+ls -ltr
 
 # Check if there are any .sql files
 if ls "$DEST_DIR"/california_collisions/*.sql 1> /dev/null 2>&1; then

@@ -11,7 +11,7 @@ services:
       - "3306:3306"
     volumes:
       - ./init:/docker-entrypoint-initdb.d
-      - ./data:/california_collisions
+      - ./data:/data
     entrypoint: >
       /bin/bash -c "
       chmod +x /docker-entrypoint-initdb.d/*.sh 2>/dev/null || true &&
