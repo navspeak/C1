@@ -11,9 +11,38 @@ e.g.:
 SELECT 
     *, 
     SUM(sales) over (partition by sales_id) as sum_sales_by_id,
--- (21, '2022-05-03', 66, 277, 198),
--- (21, '2022-05-04', 45, 277, 243),
--- (22, '2022-05-07', 85, 300, 108),
--- (22, '2022-05-08', 54, 300, 162),
--- (22, '2022-05-09', 67, 300, 229),
--- (22, '2022-05-10', 71, 300, 300);
+    SUM(sales) over (partition by sales_id ORDER BY sales_date) as sum_sales_so_far,
+FROM sales_main
+
+-- FRAMES
+SELECT 
+    *, 
+    avg(sales) over (order by sale_date) as avg_sales_so_far
+    avg(sales) over (order by sale_date
+                            ROWS between 2 PRECEDING and 1 PRECEDING) as avg_sales_2_prev_dates
+    avg(sales) over (order by sale_date
+                            ROWS between CURRENT_ROW and 1 FOLLOWING) as avg_sales_curr_plus_1_day                       
+FROM sales_main
+
+-- ROWS BETWEEN LOWER_BOUND AND UPPER_BOUND
+ -- UNBOUNDED PRECEDING/FOLLOWING
+ -- N PRECEDING/FOLLOWING
+
+--LEAD or LAG
+SELECT 
+    *, 
+    LEAD(sales) over (order by sale_date) as sales_next_day
+    LAG(sales, 2) over (order by sale_date) as sales_2_days_ago
+    LAG(sales, 2) over (PARTITION BY sales_id order by sale_date) as sales_2_days_ago_by_sales_id
+                     
+FROM sales_main
+
+-- LONG & WIDE
+
+SELECT <column_name (generally primary key of wide_tbl)>,
+     MAX(CASE WHEN <attribute_col>='<col_wide_1>' THEN <value_col> ELSE null END) AS <col_wide_1>,
+     MAX(CASE WHEN <attribute_col>='<col_wide_2>' THEN <value_col> ELSE null END) AS <col_wide_2>,
+     MAX(CASE WHEN <attribute_col>='<col_wide_3>' THEN <value_col> ELSE null END) AS <col_wide_3>,
+     ..<as many CASE statements as there are columns (other than primary key) in the wide table>..
+FROM <long_tbl> 
+GROUP BY <column_name (generally primary key of wide_tbl)>;

@@ -17,6 +17,7 @@ fi
 mkdir -p "$DEST_DIR"
 echo "🗂  Unzipping data to $DEST_DIR ..."
 unzip -o "$ZIP_FILE" -d "$DEST_DIR"
+cp /data/*.sql "$DEST_DIR"/california_collisions/
 
 # Check if there are any .sql files
 if ls "$DEST_DIR"/california_collisions/*.sql 1> /dev/null 2>&1; then
