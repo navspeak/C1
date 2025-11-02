@@ -1,0 +1,5 @@
+[
+  { "film_id": 1, "title": "A New Hope", "description": "Sci-Fi adventure", "release_year": 1977, "length": 121, "category": "Sci-Fi" },
+  { "film_id": 2, "title": "The Matrix", "description": "Sci-Fi action", "release_year": 1999, "length": 136, "category": "Sci-Fi" },
+  { "film_id": 3, "title": "Inception", "description": "Mind-bending thriller", "release_year": 2010, "length": 148, "category": "Sci-Fi" }
+]

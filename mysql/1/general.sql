@@ -46,3 +46,6 @@ SELECT <column_name (generally primary key of wide_tbl)>,
      ..<as many CASE statements as there are columns (other than primary key) in the wide table>..
 FROM <long_tbl> 
 GROUP BY <column_name (generally primary key of wide_tbl)>;
+-- Order of query execution:
+    FROM (including JOINs)
+    WHERE -> gROUP BY -> HAVING -> WINDOW -> SELECT -> DISTINCR -> ORDER BY -> LIMIT AND OFFSET

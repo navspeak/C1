@@ -9,3 +9,5 @@ bash-5.1# ls -l /docker-entrypoint-initdb.d
 bash-5.1# mysql -u root -p
 
 ``` 
+* Mongo express: http://localhost:8081 
+** docker exec -it mongodb mongosh -u admin -p admin123 --authenticationDatabase admin

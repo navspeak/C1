@@ -1,0 +1,17 @@
+products> db.purchases.aggregate([{$group: {_id: null, total: {$sum: '$Sales'}}}])
+[ { _id: null, total: 124876.155 } ]
+products> db.purchases.aggregate([{$group: {_id: null, avg: {$avg: '$Sales'}}}])
+[ { _id: null, avg: 378.4125909090909 } ]
+products> db.purchases.aggregate([{$group: {_id: null, max: {$max: '$Sales'}}}])
+[ { _id: null, max: 5667.87 } ]
+products> db.purchases.aggregate([{$group: {_id: '$Segment', avg: {$avg: '$Sales'}}}])
+[
+  { _id: 'Home Office', avg: 296.90681818181815 },
+  { _id: 'Corporate', avg: 431.5657978723404 },
+  { _id: 'Consumer', avg: 380.6654117647059 }
+products> db.purchases.aggregate([ { $match: {'Profit': {$gte: 100}}}])
+products> db.purchases.aggregate([
+    {$group: {_id: '$Segment', avg: {$avg: '$Sales'}}},
+    { $match: {'avg': {$gte: 300}}}
+    ])])
+Like group by and having 
